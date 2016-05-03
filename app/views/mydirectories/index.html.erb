@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<h1>/</h1>
+<table>
+  <tbody>
+    <% @mydirectories.each do |mydirectory| %>
+      <tr>
+        <td><%= link_to mydirectory.name, mydirectory %></td>
+        <td><%= link_to 'Rename', edit_mydirectory_path(mydirectory) %></td>
+        <td><%= link_to 'Delete', mydirectory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br />
+<br/>
+<table>
+  <tbody>
+	<% @myfiles.each do |myfile| %>
+      <tr>
+        <td><%= myfile.name %></td>
+        <td><%= link_to 'Rename', edit_myfile_path(myfile) %></td>
+        <td><%= link_to 'Delete', myfile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Directory', new_mydirectory_path(mydirectory_id: params[:id]) %>
+<br />
+<%= link_to 'New file', new_myfile_path(mydirectory_id: params[:id]) %>
